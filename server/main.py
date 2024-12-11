@@ -7,7 +7,7 @@ import jwt
 import datetime
 
 PORT = 8000
-SECRET_KEY = "your_secret_key"  # Replace with a strong secret key
+SECRET_KEY = "7868ujiji8"  
 
 def decimal_to_float(obj):
     if isinstance(obj, Decimal):
@@ -67,7 +67,6 @@ class ExpenseHandler(http.server.SimpleHTTPRequestHandler):
         cursor = connection.cursor()
 
         if "type" in data:
-            # Handle expense and budget logic
             if data["type"] == "expense":
                 cursor.execute(
                     "INSERT INTO expenses (name, amount, category) VALUES (%s, %s, %s)",
@@ -79,8 +78,7 @@ class ExpenseHandler(http.server.SimpleHTTPRequestHandler):
                     "INSERT INTO budget (id, amount) VALUES (1, %s)", (data["amount"],)
                 )
         elif "username" in data and "password" in data:
-            # Handle authentication
-            if "confirmPassword" in data:  # Registration
+            if "confirmPassword" in data: 
                 cursor.execute("SELECT * FROM users WHERE username = %s", (data["username"],))
                 if cursor.fetchone():
                     self.send_response(400)
@@ -100,7 +98,7 @@ class ExpenseHandler(http.server.SimpleHTTPRequestHandler):
                 self.send_header("Access-Control-Allow-Origin", "*")
                 self.end_headers()
                 self.wfile.write(json.dumps({"success": True, "message": "Registration successful."}).encode())
-            else:  # Login
+            else: 
                 cursor.execute(
                     "SELECT * FROM users WHERE username = %s AND password = %s",
                     (data["username"], data["password"]),

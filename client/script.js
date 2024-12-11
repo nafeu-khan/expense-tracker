@@ -10,7 +10,7 @@ function login(event) {
     }).then(response => {
         if (response.status === 200) {
             return response.json().then(data => {
-                localStorage.setItem('token', data.token); // Simulating token storage
+                localStorage.setItem('token', data.token); 
                 alert('Login successful!');
                 window.location.href = 'index.html';
             });
@@ -86,7 +86,6 @@ function updateExpenseList() {
         });
 }
 
-// Only check authentication on restricted pages
 if (!window.location.href.includes('login.html') && !window.location.href.includes('register.html')) {
     document.addEventListener('DOMContentLoaded', updateExpenseList);
 }
