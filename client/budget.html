@@ -1,0 +1,39 @@
+<!-- budjet.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Expense Tracker</h2>
+        <a href="index.html">Home</a>
+        <a href="budget.html">Budget Tracker</a>
+    </div>
+
+    <div class="main-content">
+        <h1>Budget Tracker</h1>
+        <div class="budget-section">
+            <input type="number" id="budget" placeholder="Set Monthly Budget">
+            <button onclick="setBudget()">Set Budget</button>
+        </div>
+        <div class="expense-form">
+            <input type="text" id="expense-name" placeholder="Expense Name">
+            <input type="number" id="expense-amount" placeholder="Amount">
+            <input type="text" id="expense-category" placeholder="Category">
+            <button onclick="addExpense()">Add Expense</button>
+        </div>
+        <div class="expense-list">
+            <h2>Expenses</h2>
+            <ul id="expenses"></ul>
+        </div>
+        <div class="summary">
+            <h3>Remaining Budget: $<span id="remaining-budget">0</span></h3>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
