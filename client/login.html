@@ -1,10 +1,11 @@
-<!-- index.html -->
+
+<!-- login.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Expense Tracker</title>
+    <title>Login</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -15,14 +16,13 @@
         <a href="login.html">Login</a>
     </div>
     <div class="main-content">
-        <h1>Welcome to the Expense Tracker App</h1>
-        <p>Manage your budget effectively and track your spending in one place.</p>
-        <a href="budget.html" class="button">Get Started</a>
-
-        <div class="summary-section">
-            <h2>Expense Summary by Category</h2>
-            <ul id="category-summary"></ul>
-        </div>
+        <h1>Login</h1>
+        <form id="login-form" onsubmit="login(event)">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+        <p>Don't have an account? <a href="register.html">Register</a></p>
     </div>
     <script src="script.js"></script>
 </body>
