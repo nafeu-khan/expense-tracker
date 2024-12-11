@@ -1,3 +1,4 @@
+# Updated database schema
 import mysql.connector
 
 def connect_db():

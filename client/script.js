@@ -3,9 +3,9 @@ function updateExpenseList() {
     fetch('http://localhost:8000')
         .then(response => response.json())
         .then(data => {
-            document.getElementById('remaining-budget').textContent = 
-                (data.budget - data.expenses.reduce((sum, exp) => sum + exp.amount, 0)).toFixed(2);
-            
+            console.log(data)
+            document.getElementById('remaining-budget').textContent = (data.budget - data.expenses.reduce((sum, exp) => sum + exp.amount, 0)).toFixed(2);
+
             const expenseList = document.getElementById('expenses');
             expenseList.innerHTML = data.expenses
                 .map(exp => 
@@ -14,6 +14,16 @@ function updateExpenseList() {
                         <button onclick="deleteExpense(${exp.id})">Delete</button>
                     </li>`
                 ).join('');
+
+                const categorySummary = document.getElementById('category-summary');
+
+                Object.entries(data.categorySummary).forEach(([category, total]) => {
+                    console.log(category, total);
+                });
+                
+                categorySummary.innerHTML = Object.entries(data.categorySummary)
+                    .map(([category, total]) => `<li>${category}: $${total.toFixed(2)}</li>`)
+                    .join('');
         });
 }
 
@@ -41,7 +51,7 @@ function addExpense() {
         document.getElementById('expense-name').value = '';
         document.getElementById('expense-amount').value = '';
         document.getElementById('expense-category').value = '';
-        
+
         updateExpenseList();
     });
 }
